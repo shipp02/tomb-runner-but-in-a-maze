@@ -8,7 +8,7 @@
 
 public class Maze {
     private char[][] myMap;
-    private char[][] solution;
+    public char[][] solution;
     private int row;
     private int col;
 
@@ -24,6 +24,15 @@ public class Maze {
         fillMap(solution);
         fillSolution();
     }
+    
+    public void jump(int rowMove,int colMove){
+        myMap[row][col] = '!';
+        row = rowMove;
+        col = colMove;
+        myMap[row][col] = 'X';
+        
+    }
+    
     public int[] getCurrentLoc(){
         int[] location = {row,col};
         return location;
@@ -44,7 +53,9 @@ public class Maze {
     public void printMap() {
         printMap(myMap);
     }
-
+    public void printSolution(){
+        printMap(solution);
+    }
     private void printMap(char[][] map) {
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 20; j++) {
@@ -298,7 +309,7 @@ public class Maze {
         solution[6][4] = '0';
         solution[15][4] = '0';
         solution[9][10] = '0';
-        solution[13][17] = '0';
+        //solution[10][19] = '|';
         solution[13][15] = '0';
         solution[18][10] = '0';
     }
